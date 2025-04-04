@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 using namespace std;
@@ -7,27 +8,32 @@ private:
     int hours;
     int minutes;
     int seconds;
-    char lapse; // puede ser 'a' o 'p' (por a.m. y p.m.)
+    bool isPm; // Usar bool ocupa solo 1 byte
 public:
-    Timer(int _hours = 0, int _minutes = 0, int _seconds = 0, char _lapse = 'a');
+    Timer();
+    Timer(int _hours, int _minutes = 0, int _seconds = 0, bool _isPm = false);
 
     void getHours() const; // Getters
 
     void getMinutes() const;
     
     void getSeconds() const;
+    
+    void getMeridian() const;
 
-    void getTime12() const; // Con am y pm
+    void getTime() const; // Con am y pm
 
-    void getTime24() const; // Sin am y pm
+    void getTime24H() const; // Sin am y pm
 
-    void setHours(int _hours); // Setters
+    void setHours(int newhours); // Setters
 
-    void setMinutes(int _minutes);
+    void setMinutes(int newminutes);
 
-    void setSeconds(int _seconds);
+    void setSeconds(int newseconds);
 
-    void setTime(int _hours, int _minutes, int _seconds);
+    void setMeridian(bool ispm);
+
+    void setTime(int newhours, int _minutes, int _seconds);
 };
 
 // Notas
