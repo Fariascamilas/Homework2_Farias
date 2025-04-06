@@ -1,4 +1,4 @@
-#include "Timer.h"
+#include "Timer.hpp"
 #include <iomanip>
 
 bool checkHours(int hours){
