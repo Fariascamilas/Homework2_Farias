@@ -1,4 +1,4 @@
-#include "Student.h"
+#include "Student.hpp"
 #include <iostream>
 
 Student::Student(const char* _fullName, int _recordNumber, vector<int> _grades) : fullName(_fullName), recordNumber(_recordNumber), grades(_grades){

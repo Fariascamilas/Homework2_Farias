@@ -1,5 +1,5 @@
 #pragma once
-#include "Course.h"
+#include "Course.hpp"
 #include <algorithm>
 #include <iostream>
 
