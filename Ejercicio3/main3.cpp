@@ -2,74 +2,79 @@
 #include <iostream>
 
 int main() {
-    try {
-        // Pruebas con class Integer
-        Integer a(5);
-        Integer b(3);
+    // --- Entero ---
+    Number* int1 = new Integer(3);
+    Number* int2 = new Integer(5);
+    Number* intSum = int1->sum(*int2);
+    Number* intSub = int1->subtract(*int2);
+    Number* intMult = int1->multiply(*int2);
+    Number* intDiv = int1->divide(*int2);
+    cout << int1->toString() << " + " << int2->toString() << " = " << intSum->toString() << endl;
+    cout << int1->toString() << " - " << int2->toString() << " = " << intSub->toString() << endl;
+    cout << int1->toString() << " * " << int2->toString() << " = " << intMult->toString() << endl;
+    cout << int1->toString() << " / " << int2->toString() << " = " << intDiv->toString() << endl << endl;
 
-        Number* intSum = a.sum(b);
-        Number* intSub = a.subtract(b);
-        Number* intMult = a.multiply(b);
-        Number* intDiv = a.divide(b);
-        cout<<"Integer Sum: "<<intSum->toString()<<endl;
-        cout<<"Integer Subtract: "<<intSub->toString()<<endl;
-        cout<<"Integer Multiply: "<<intMult->toString()<<endl;
-        cout<<"Integer Divide: "<<intDiv->toString()<<endl;
+    // --- Real ---
+    Number* real1 = new Real(3.14);
+    Number* real2 = new Real(2.5);
+    Number* realSum = real1->sum(*real2);
+    Number* realSub = real1->subtract(*real2);
+    Number* realMult = real1->multiply(*real2);
+    Number* realDiv = real1->divide(*real2);
+    cout << real1->toString() << " + " << real2->toString() << " = " << realSum->toString() << endl;
+    cout << real1->toString() << " - " << real2->toString() << " = " << realSub->toString() << endl;
+    cout << real1->toString() << " * " << real2->toString() << " = " << realMult->toString() << endl;
+    cout << real1->toString() << " / " << real2->toString() << " = " << realDiv->toString() << endl << endl;
 
-        // Pruebas con class Real
-        Real r1(4.5);
-        Real r2(2.0);
+    // --- Complejo ---
+    Number* comp1 = new Complex(2, 3);
+    Number* comp2 = new Complex(1, -1);
+    Number* compSum = comp1->sum(*comp2);
+    Number* compSub = comp1->subtract(*comp2);
+    Number* compMult = comp1->multiply(*comp2);
+    Number* compDiv = comp1->divide(*comp2);
+    cout << "(" << comp1->toString() << ")" << " + " << "(" << comp2->toString() << ")" << " = " << "(" << compSum->toString() << ")" << endl;
+    cout << "(" << comp1->toString() << ")" << " - " << "(" << comp2->toString() << ")" << " = " << "(" << compSub->toString() << ")" << endl;
+    cout << "(" << comp1->toString() << ")" << " * " << "(" << comp2->toString() << ")" << " = " << "(" << compMult->toString() << ")" << endl;
+    cout << "(" << comp1->toString() << ")" << " / " << "(" << comp2->toString() << ")" << " = " << "(" << compDiv->toString() << ")" << endl << endl;
 
-        Number* realSum = r1.sum(r2);
-        Number* realSub = r1.subtract(r2);
-        Number* realMult = r1.multiply(r2);
-        Number* realDiv = r1.divide(r2);
-        cout<<"Real Sum: "<<realSum->toString()<<endl;
-        cout<<"Real Subtract: "<<realSub->toString()<<endl;
-        cout<<"Real Multiply: "<<realMult->toString()<<endl;
-        cout<<"Real Divide: "<<realDiv->toString()<<endl;
+    // --- Real + Entero ---
+    Number* realIntSum = real1->sum(*int1);
+    Number* realIntSub = real1->subtract(*int1);
+    Number* realIntMult = real1->multiply(*int1);
+    Number* realIntDiv = real1->divide(*int1);
+    cout << real1->toString() << " + " << int1->toString() << " = " << realIntSum->toString() << endl;
+    cout << real1->toString() << " - " << int1->toString() << " = " << realIntSub->toString() << endl;
+    cout << real1->toString() << " * " << int1->toString() << " = " << realIntMult->toString() << endl;
+    cout << real1->toString() << " / " << int1->toString() << " = " << realIntDiv->toString() << endl << endl;
 
-        // Pruebas con class Complex
-        Complex c1(3.0, 2.0);
-        Complex c2(1.0, 4.0);
+    // --- Complejo + Entero ---
+    Number* compIntSum = comp1->sum(*int1);
+    Number* compIntSub = comp1->subtract(*int1);
+    Number* compIntMult = comp1->multiply(*int1);
+    Number* compIntDiv = comp1->divide(*int1);
+    cout << "(" << comp1->toString() << ")" << " + " << int1->toString() << " = " << "(" << compIntSum->toString() << ")" << endl;
+    cout << "(" << comp1->toString() << ")" << " - " << int1->toString() << " = " << "(" << compIntSub->toString() << ")" << endl;
+    cout << "(" << comp1->toString() << ")" << " * " << int1->toString() << " = " << "(" << compIntMult->toString() << ")" << endl;
+    cout << "(" << comp1->toString() << ")" << " / " << int1->toString() << " = " << "(" << compIntDiv->toString() << ")" << endl << endl;
 
-        Number* compSum = c1.sum(c2);
-        Number* compSub = c1.subtract(c2);
-        Number* compMult = c1.multiply(c2);
-        Number* compDiv = c1.divide(c2);
-        cout<<"Complex Sum: "<<compSum->toString()<<endl;
-        cout<<"Complex Subtract: "<<compSub->toString()<<endl;
-        cout<<"Complex Multiply: "<<compMult->toString()<<endl;
-        cout<<"Complex Divide: "<<compDiv->toString()<<endl;
+    // --- Complejo + Real ---
+    Number* compRealSum = comp1->sum(*real1);
+    Number* compRealSub = comp1->subtract(*real1);
+    Number* compRealMult = comp1->multiply(*real1);
+    Number* compRealDiv = comp1->divide(*real1);
+    cout << "(" << comp1->toString() << ")" << " + " << real1->toString() << " = " << "(" << compRealSum->toString() << ")" << endl;
+    cout << "(" << comp1->toString() << ")" << " - " << real1->toString() << " = " << "(" << compRealSub->toString() << ")" << endl;
+    cout << "(" << comp1->toString() << ")" << " * " << real1->toString() << " = " << "(" << compRealMult->toString() << ")" << endl;
+    cout << "(" << comp1->toString() << ")" << " / " << real1->toString() << " = " << "(" << compRealDiv->toString() << ")" << endl << endl;
 
-        // Pruebas de operaciones entre Complex y Real
-        Real r3(2.0);
-        Number* compSumReal = c1.sum(r3);
-        Number* compMultReal = c1.multiply(r3);
-        Number* compDivReal = c1.divide(r3);
-        cout<<"Complex + Real: "<<compSumReal->toString()<<endl;
-        cout<<"Complex * Real: "<<compMultReal->toString()<<endl;
-        cout<<"Complex / Real: "<<compDivReal->toString()<<endl;
+    // Liberar memoria
+    delete int1; delete int2; delete intSum; delete intSub; delete intMult; delete intDiv;
+    delete real1; delete real2; delete realSum; delete realSub; delete realMult; delete realDiv;
+    delete comp1; delete comp2; delete compSum; delete compSub; delete compMult; delete compDiv;
+    delete realIntSum; delete realIntSub; delete realIntMult; delete realIntDiv;
+    delete compIntSum; delete compIntSub; delete compIntMult; delete compIntDiv;
+    delete compRealSum; delete compRealSub; delete compRealMult; delete compRealDiv;
 
-        // Liberar memoria dinámica
-        delete intSum;
-        delete intSub;
-        delete intMult;
-        delete intDiv;
-        delete realSum;
-        delete realSub;
-        delete realMult;
-        delete realDiv;
-        delete compSum;
-        delete compSub;
-        delete compMult;
-        delete compDiv;
-        delete compSumReal;
-        delete compMultReal;
-        delete compDivReal;
-    }
-    catch(const exception& ex) {
-        cout<<"Error: "<<ex.what()<<endl;
-    }
     return 0;
 }
