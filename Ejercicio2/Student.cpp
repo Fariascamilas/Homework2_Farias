@@ -31,15 +31,3 @@ float Student::getGPA() const{
     }
     return float(sum)/grades.size();
 }
-
-int main(){
-    char name[] = "Camila Farías";
-    vector<int> grades = {10,9,9,9};
-    Student myStudent(name,36612,grades);
-
-    cout<<myStudent.getFullName()<<endl;
-    cout<<myStudent.getGPA()<<endl;
-    cout<<myStudent.getRecordNumber()<<endl;
-
-    return 0;
-}
