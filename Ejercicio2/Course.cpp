@@ -17,13 +17,6 @@ void Course::printCourse() const {
              return *a < *b;
          });
     cout<<*this<<endl;
-    /*for(const auto& s : sortedStudents) {
-        if(s) {
-            cout << "Nombre: " << s->getFullName() 
-                 << " | Legajo: " << s->getRecordNumber() 
-                 << " | Promedio: " << s->getGPA() << endl;
-        }
-    }*/
 }
 
 bool Course::isEnrolled(int record){
