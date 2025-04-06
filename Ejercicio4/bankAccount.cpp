@@ -6,14 +6,14 @@ void Account::deposit(double amount){
     this->balance += amount;
 }
 
-savingsAccount::savingsAccount(double _balance, string _accountOwner) {
+savingsAccount::savingsAccount(string _accountOwner, double _balance) {
 if (_balance < 0){throw invalid_argument("El monto es inválido");}
     this->balance = _balance;
     this->accountOwner = _accountOwner;
     this->shows = 0;
 };
 
-void savingsAccount::draw(double amount){
+void savingsAccount::draw(double amount, Account &savings){
     if (amount > this->balance){
         throw invalid_argument("No se puede retirar mas dinero del disponible en la caja de ahorro");
     }
@@ -22,27 +22,31 @@ void savingsAccount::draw(double amount){
 
 void savingsAccount::showInfo(){
     this->shows += 1; 
-    if (shows > 2){ // mas de dos veces, o sea a la tercera
-        this->balance -= 20; // ES UN IGUAL A 3 O UN MAYOR A DOS?? VER SI SOLO SE DESCUENTA UNA VEZ O SIEMPRE LUEGO DE LA 2DA.
+    if (shows > 2){  
+        this->balance -= 20; 
     }
     cout<<"====== CAJA DE AHORRO ======"<<endl<<"Balance: "<<this->balance<<endl<<"Titular: "<<this->accountOwner<<endl;
 }
 
-currentAccount::currentAccount(double _balance = 0, string _accountOwner){
+currentAccount::currentAccount(string _accountOwner, double _balance){
     if (_balance < 0){throw invalid_argument("El monto es inválido");}
     this->balance = _balance;
     this->accountOwner = _accountOwner;
     this->shows = 0;
 }
-void currentAccount::draw(double amount){
+void currentAccount::draw(double amount, Account &savings){
     if (amount > this->balance){
-        int balanceCajaAhorro = 123123;
-        if ((amount - this->balance) < balanceCajaAhorro){
-            balanceCajaAhorro -= amount - this->balance;
+        savingsAccount* sa = dynamic_cast<savingsAccount*>(&savings);
+        if (!sa){throw invalid_argument("La dirección no corresponde a una caja de ahorro");}
+        if (sa->accountOwner != this->accountOwner){throw invalid_argument("El titular de la caja de ahorro no coincide con el de la cuenta corriente");}
+        if ((amount - this->balance) < sa->balance){
+            sa->balance -= (amount - this->balance);
             this->balance = 0;
+            return;
         }
         throw invalid_argument("La cuenta no posee dinero suficiente para la extracción");
     }
+    this->balance -= amount;
 }
 void currentAccount::showInfo(){
     cout<<"====== CCUENTA CORRIENTE ======"<<endl<<"Balance: "<<this->balance<<endl<<"Titular: "<<this->accountOwner<<endl;
