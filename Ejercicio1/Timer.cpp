@@ -1,6 +1,11 @@
 #include "Timer.hpp"
 #include <iomanip>
 
+/**
+ * @brief Verifica que la hora sea válida (1-12).
+ * @param hours Hora a verificar
+ * @return true si es válida, false en caso contrario
+ */
 bool checkHours(int hours){
     if(hours<1 || hours>12){
         return 0;
@@ -8,6 +13,11 @@ bool checkHours(int hours){
     return 1;
 }
 
+/**
+ * @brief Verifica que los minutos sean válidos (0-59).
+ * @param minutes Minutos a verificar
+ * @return true si son válidos, false en caso contrario
+ */
 bool checkMinutes(int minutes){
     if(minutes<0 || minutes>59){
         return 0;
@@ -15,6 +25,11 @@ bool checkMinutes(int minutes){
     return 1;
 }
 
+/**
+ * @brief Verifica que los segundos sean válidos (0-59).
+ * @param seconds Segundos a verificar
+ * @return true si son válidos, false en caso contrario
+ */
 bool checkSeconds(int seconds){
     if(seconds<0 || seconds>59){
         return 0;
@@ -68,7 +83,7 @@ void Timer::getTime() const {
     this->getMeridian();
 }
 
-void Timer::getTime24H() const { // ERROR! ERA SOLO LA HORA
+void Timer::getTime24H() const {
     switch(isPm){
         case 0:
             cout<<setfill('0')<<setw(2)<<hours<<"h "<<setfill('0')<<setw(2)<<minutes<<"m "<<setfill('0')<<setw(2)<<seconds<<"s"<<endl;
@@ -103,52 +118,8 @@ void Timer::setMeridian(bool ispm){
     this->isPm = ispm; // No chequeo nunca si es valido ya que cualquier numero != 0 sera true; false caso contrario
 }
 
-/*int main(){
-
-    // Pruebas: inicializaciones variadas
-    Timer prueba1(1);
-    prueba1.getTime();
-    Timer prueba2(1,2);
-    prueba2.getTime();
-    Timer prueba3(1,2,3);
-    prueba3.getTime();
-    Timer prueba4(8,2,3,true);
-    prueba4.getTime();
-    prueba4.getTime24H();
-
-    // Modificaciones por casos
-    Timer myTimer;
-
-    myTimer.getHours();
-    myTimer.getMinutes();
-    myTimer.getSeconds();
-    myTimer.getMeridian();
-    myTimer.getTime();
-    myTimer.getTime24H();
-
-    // Caso 1: parametros válidos (02h 22m 22s p.m.)
-    myTimer.setHours(2);
-    myTimer.setMinutes(22);
-    myTimer.setSeconds(22);
-    myTimer.setMeridian(1);
-
-    // Caso 2: hora inválida (22h 22m 22s p.m.)
-    myTimer.setHours(22);
-    myTimer.setMinutes(22);
-    myTimer.setSeconds(22);
-    myTimer.setMeridian(1);
-    
-    // Caso 3: segundos inválidos (22h 22m 88s p.m.)
-    myTimer.setHours(2);
-    myTimer.setMinutes(22);
-    myTimer.setSeconds(88);
-    myTimer.setMeridian(1);
-
-    // Caso 3: segundos inválidos (22h 22m 88s p.m.)
-    myTimer.setHours(2);
-    myTimer.setMinutes(22);
-    myTimer.setSeconds(88);
-    myTimer.setMeridian(1);
-
-    return 0;
-}*/
+void Timer::setTime(int newhours, int _minutes, int _seconds){
+    setHours(newhours);
+    setMinutes(_minutes);
+    setSeconds(_seconds);
+}

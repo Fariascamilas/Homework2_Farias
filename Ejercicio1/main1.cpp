@@ -44,6 +44,7 @@ void testInitialization() {
             cout << "Error: " << e.what() << endl;
         }
     }
+    
     cout << "\nTest c) Inicializar con horas y minutos:\n";
     int minutes;
     while (true) {
